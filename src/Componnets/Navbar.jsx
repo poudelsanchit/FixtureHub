@@ -28,9 +28,9 @@ const Navbar = () => {
     }, [])
 
     return (
-        <div className='font-Chakra text-primary-text bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999'>
+        <div className=' text-primary-text bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999'>
             <div className="flex justify-around ">
-                <div className="text-3xl">
+                <div className="text-xl font-Roboto">
                     Fixture Hub
                 </div>
                 <div className=" text-xl gap-16 pt-2 hidden">
@@ -58,7 +58,7 @@ const Navbar = () => {
                 {/* <div className='text-2xl pt-2 font-extrabold text-button'>
                     <FiUser />
                 </div> */}
-                <button onClick={handleThemeSwitcher} className='p-1 hidden bg-button hover:bg-button-hover absolute top-5 right-16 rounded-md md:right-5 lg:right-10'>
+                <button onClick={handleThemeSwitcher} className='p-1  bg-button hover:bg-button-hover absolute top-5 right-8 rounded-md md:right-5 lg:right-10'>
                     {
                         theme == 'light' ? <BsMoonFill />
                             : <BsSunFill />
