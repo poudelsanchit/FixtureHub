@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Basketball = () => {
+const basketball = () => {
     return (
         <div className='pt-30'>
             Basketball
@@ -8,4 +8,4 @@ const Basketball = () => {
     )
 }
 
-export default Basketball
+export default basketball

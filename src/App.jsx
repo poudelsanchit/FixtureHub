@@ -1,7 +1,7 @@
 import Navbar from "./Componnets/Navbar"
 import { Routes, Route } from "react-router-dom"
-import Football from './pages/football'
 import Basketball from "./pages/basketball"
+import Football from './pages/football'
 import Cricket from "./pages/cricket"
 import Main from "./pages/Main"
 
