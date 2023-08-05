@@ -5,3 +5,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  html {
+    overflow-x: hidden;
+  }
+
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #191627;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  background-color: #191627;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #6e57e0;
+}
+
+.active {
+  color: rgb(164, 130, 252)
+}
