@@ -20,7 +20,7 @@ export default {
       'dark-bg': '#0b090a',
       'secondary-bg': '#393E46',
       'primary-text': '#ffffff',
-      'secondary-text': '#EEEEEE',
+      'secondary-text': '#666666',
       'button': '#6e57e0'
 
     },
