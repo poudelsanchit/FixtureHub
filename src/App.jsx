@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import Navbar from "./Componnets/Navbar"
 import Football from "./pages/Football"
-import Football from "./pages/Cricket"
-import Football from "./pages/Basketball"
+import Cricket from "./pages/Cricket"
+import BasketBall from "./pages/Basketball"
 
 
 function App() {
