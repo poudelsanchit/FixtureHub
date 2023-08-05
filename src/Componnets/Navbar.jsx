@@ -31,10 +31,14 @@ const Navbar = () => {
         <div className=' text-primary-text bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999'>
             <div className="flex justify-start gap-5">
                 {/* Menu */}
-                <div className='text-xl flex justify-center items-center ml-3 p-1  border-2 border-[#243c5a] rounded-lg'>
-                    <CgMenuLeft />
+                <div className='text-xl relative flex justify-center items-center ml-3 p-1  border-2 border-[#282828] rounded-lg'>
+                    <div>
+                        <CgMenuLeft />
+                    </div>
+                    <div className='bg-[#FF0000] w-2 h-2 absolute rounded-lg -top-0.5 -right-0.5' />
+
                 </div>
-                <div className="text-xl font-Roboto">
+                <div className="text-xl font-Chakra font-semibold">
                     FixtureHub
                 </div>
                 {/* <div className=" text-xl gap-16 pt-2 hidden">

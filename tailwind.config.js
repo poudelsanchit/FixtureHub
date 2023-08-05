@@ -16,7 +16,7 @@ export default {
     },
     colors:
     {
-      'navbar-bg': '#121212',
+      'navbar-bg': '#141414',
       'dark-bg': '#0b090a',
       'secondary-bg': '#393E46',
       'primary-text': '#ffffff',
