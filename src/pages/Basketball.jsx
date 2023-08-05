@@ -1,11 +1,9 @@
 import React from 'react'
 
-const basketball = () => {
+const Basketball = () => {
     return (
-        <div className='pt-30'>
-            Basketball
-        </div>
+        <div>basketball</div>
     )
 }
 
-export default basketball
+export default Basketball

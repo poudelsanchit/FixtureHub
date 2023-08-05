@@ -1,12 +1,9 @@
 import React from 'react'
 
-const football = () => {
+const Football = () => {
     return (
-        <>
-            <div className='bg-dark-bg w-screen text-primary-text pt-30'>
-                Football
-            </div>
-        </>)
+        <div>football</div>
+    )
 }
 
-export default football
+export default Football
