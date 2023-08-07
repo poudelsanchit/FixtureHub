@@ -4,7 +4,7 @@ import { BsMoonFill, BsSun } from 'react-icons/bs';
 import { BsSunFill } from 'react-icons/bs';
 import { CgMenuLeft } from 'react-icons/cg';
 import { IoCloseOutline } from 'react-icons/io5';
-
+import { BsFillCircleFill, BsArrowBarLeft } from 'react-icons/bs'
 import { BiFootball, BiBaseball, BiCricketBall } from 'react-icons/bi';
 
 import { useState, useEffect } from 'react';
@@ -43,11 +43,23 @@ const Navbar = () => {
                     FixtureHub
                 </div>
                 {isOpen ?
-                    <div className='transition-all ease-in-out duration-1000 absolute flex flex-col gap-2 rounded-md left-1 top-[3.3rem] z-50 bg-navbar-bg mt-1 mr-6 '>
-                        <div className="close-icon"><IoCloseOutline className='flex items-end text-2xl cursor-pointer md:hidden dark:text-primary' onClick={() => setIsOpen((value) => false)} /></div>
-                        <NavLink className='pr-4 pl-4' to={'/'} onClick={() => setIsOpen((value) => false)}>Football</NavLink>
-                        <NavLink className='pr-4 pl-4' to={'/basketball'} onClick={() => setIsOpen((value) => false)} >BasketBall</NavLink>
-                        <NavLink className='pr-4 pl-4' to={'/cricket'} onClick={() => setIsOpen((value) => false)}> Cricket</NavLink>
+                    <div className='transition-all ease-in-out duration-1000 absolute flex flex-col gap-2 rounded-r-2xl left-0 h-screen w-2/3 top-0 z-50 bg-sidebar-bg  '>
+
+                        <div className='flex justify-between'>
+                            <div className='flex flex-row gap-2 text-[0.6rem] mt-5 ml-3 text-[#2a2c30]'>
+                                <BsFillCircleFill />
+                                <BsFillCircleFill />
+                                <BsFillCircleFill />
+
+                            </div>
+                            <div>
+                                <BsArrowBarLeft className=' mt-5 mr-3 text-xl text-[#7c818a]' />
+                            </div>
+                        </div>
+                        {/* <div className=" hidden close-icon"><IoCloseOutline className='flex items-end text-2xl cursor-pointer md:hidden dark:text-primary' onClick={() => setIsOpen((value) => false)} /></div>
+                        <NavLink className='pr-4 pl-4 hidden' to={'/'} onClick={() => setIsOpen((value) => false)}>Football</NavLink>
+                        <NavLink className='pr-4 pl-4 hidden' to={'/basketball'} onClick={() => setIsOpen((value) => false)} >BasketBall</NavLink>
+                        <NavLink className='pr-4 pl-4 hidden' to={'/cricket'} onClick={() => setIsOpen((value) => false)}> Cricket</NavLink> */}
 
                     </div>
                     :

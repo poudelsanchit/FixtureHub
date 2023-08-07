@@ -14,8 +14,8 @@ function App() {
       <Main />
       <Routes>
         <Route index element={<Football />} />
-        <Route to='/basketball' element={<BasketBall />} />
-        <Route to='/cricket' element={<Cricket />} />
+        <Route path='/basketball' element={<BasketBall />} />
+        <Route path='/cricket' element={<Cricket />} />
 
       </Routes>
     </>
