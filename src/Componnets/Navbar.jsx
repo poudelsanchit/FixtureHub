@@ -42,7 +42,7 @@ const Navbar = () => {
             <div className="flex justify-start gap-5" ref={menuRef}>
                 {/* Menu */}
                 <div className='text-xl relative flex justify-center items-center ml-3 p-1  border-2 border-[#282828] rounded-lg'>
-                    <div onClick={() => setIsOpen((value) => true)}>
+                    <div onClick={() => setIsOpen((value) => true)} className='cursor-pointer'>
                         <CgMenuLeft />
                     </div>
                     <div className='bg-[#FF0000] w-2 h-2 absolute rounded-lg -top-0.5 -right-0.5' />
@@ -60,7 +60,7 @@ const Navbar = () => {
                                 <BsFillCircleFill />
                                 <BsFillCircleFill />
                             </div>
-                            <div onClick={() => setIsOpen((value) => false)}>
+                            <div onClick={() => setIsOpen((value) => false)} className='cursor-pointer'>
                                 <BsArrowBarLeft className=' mt-5 mr-3 text-xl text-[#7c818a]' />
                             </div>
                         </div>

@@ -30,7 +30,7 @@ const Football = () => {
         setIsLoaded(true);
 
     }
-    console.log(teams.slice(0, 5));
+    console.log(bundesliga.slice(0, 5));
     useEffect(() => {
         fetchTable();
     }, []);
@@ -64,75 +64,96 @@ const Football = () => {
         }
     ]
     return (
-        <div className='bg-dark-bg text-primary-text'>
-            {
-                isloaded ? <>
-                    {
-                        Leagues.map(({ Image, LeagueName, LeagueCountry, LeagueCode }) => {
-                            return <>
-                                <div className=' p-3'>
-                                    {/* Header   */}
-                                    <div className='flex justify-between pb-3'>
-                                        <div className='text-lg font-Chakra flex gap-2'>
+        <>
 
-                                            <div className='w-8 flex items-center'>
-                                                <img src={Image} alt="" />
+            <div className='bg-dark-bg text-primary-text '>
+                <div className='flex justify-evenly pt-6 bg-[#292929]'>
+                    <button className=' bg-[#5242c5] rounded-xl w-1/4 h-8'>
+                        <p className='text-primary-text'>
+                            Standings
+                        </p>
+                    </button>
+                    <button className=' bg-[#5242c5] rounded-xl w-1/4 h-8'>
+                        <p className='text-primary-text'>
+                            Fixtures
+                        </p>
+                    </button>
+                    <button className=' bg-[#5242c5] rounded-xl w-1/4 h-8'>
+                        <p className='text-primary-text'>
+                            Stats
+                        </p>
+                    </button>
+                </div>
+                {
+                    isloaded ? <>
+                        {
+                            Leagues.map(({ Image, LeagueName, LeagueCountry, LeagueCode }) => {
+                                return <>
+                                    <div className=' p-3 '>
+                                        {/* Header   */}
+                                        <div className='flex justify-between pb-3'>
+                                            <div className='text-lg font-Chakra flex gap-2'>
+
+                                                <div className='w-8 flex items-center'>
+                                                    <img src={Image} alt="" />
+                                                </div>
+                                                <div> <p className='font-bold'>{LeagueName}</p>
+                                                    <p className='text-sm text-secondary-text'>{LeagueCountry}</p>
+                                                </div>
                                             </div>
-                                            <div> <p className='font-bold'>{LeagueName}</p>
-                                                <p className='text-sm text-secondary-text'>{LeagueCountry}</p>
+                                            <div className='flex items-center text-2xl'>
+                                                <BsChevronRight />
                                             </div>
                                         </div>
-                                        <div className='flex items-center text-2xl'>
-                                            <BsChevronRight />
+                                        <div className='bg-navbar-bg rounded-md flex'>
+
+                                            <table className='w-full'>
+
+                                                <tbody className='border-1 font-bold'>
+                                                    <tr>
+                                                        <td> </td>
+                                                        <td>Team</td>
+                                                        <td className='p-0 w-10'>MP</td>
+                                                        <td className='p-0 w-10'>W</td>
+                                                        <td className='p-0 w-10'>D</td>
+                                                        <td className='p-0 w-10'>L</td>
+                                                        <td className='p-0 w-10'>Pts</td>
+                                                    </tr>
+
+                                                </tbody>
+                                                {
+                                                    LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS }) => {
+                                                        return <>
+                                                            <tbody>
+
+                                                                <tr className='h-10'>
+                                                                    <td> <div className={overall_promotion !== "Promotion - Champions League (Group Stage: )" ? 'w-[1px] h-11 bg-[#FFA500]' : 'w-[1px] h-11 bg-button'}></div></td>
+                                                                    <td >{team_name}</td>
+                                                                    <td >{overall_league_payed}</td>
+                                                                    <td >{overall_league_W}</td>
+                                                                    <td >{overall_league_D}</td>
+                                                                    <td >{overall_league_L}</td>
+                                                                    <td >{overall_league_PTS}</td>
+                                                                </tr>
+                                                            </tbody >
+                                                        </>
+                                                    })
+                                                }
+
+                                            </table>
                                         </div>
-                                    </div>
-                                    <div className='bg-navbar-bg rounded-md flex'>
+                                    </div >
 
-                                        <table className='w-full'>
+                                </>
 
-                                            <tbody className='border-1 font-bold'>
-                                                <tr>
-                                                    <td> </td>
-                                                    <td>Team</td>
-                                                    <td className='p-0 w-10'>MP</td>
-                                                    <td className='p-0 w-10'>W</td>
-                                                    <td className='p-0 w-10'>D</td>
-                                                    <td className='p-0 w-10'>L</td>
-                                                    <td className='p-0 w-10'>Pts</td>
-                                                </tr>
-
-                                            </tbody>
-                                            {
-                                                LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS }) => {
-                                                    return <>
-                                                        <tbody>
-
-                                                            <tr className='h-10'>
-                                                                <td> <div className={overall_promotion !== "Promotion - Champions League (Group Stage: )" ? 'w-[1px] h-11 bg-[#FFA500]' : 'w-[1px] h-11 bg-button'}></div></td>
-                                                                <td >{team_name}</td>
-                                                                <td >{overall_league_payed}</td>
-                                                                <td >{overall_league_W}</td>
-                                                                <td >{overall_league_D}</td>
-                                                                <td >{overall_league_L}</td>
-                                                                <td >{overall_league_PTS}</td>
-                                                            </tr>
-                                                        </tbody >
-                                                    </>
-                                                })
-                                            }
-
-                                        </table>
-                                    </div>
-                                </div >
-
-                            </>
-
+                            }
+                            )
                         }
-                        )
-                    }
-                </>
-                    : <div className='h-screen'>Loading....</div>
-            } </div >
+                    </>
+                        : <div className='h-screen'>Loading....</div>
+                } </div >
+        </>
+
     )
 }
 
