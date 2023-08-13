@@ -2,6 +2,8 @@ import React from 'react'
 import PremierLeague from '../assets/plwhite.png'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
+import Goats from '../assets/goat.jpg'
+
 import Bundesliga from '../assets/bundesliga.png'
 import { BsChevronRight } from 'react-icons/bs'
 import { useState, useEffect } from 'react'
@@ -65,31 +67,20 @@ const Football = () => {
     ]
     return (
         <>
-
-            <div className='bg-dark-bg text-primary-text '>
-                <div className='flex justify-evenly pt-6 bg-[#292929]'>
-                    <button className=' bg-[#5242c5] rounded-xl w-1/4 h-8'>
-                        <p className='text-primary-text'>
-                            Standings
-                        </p>
-                    </button>
-                    <button className=' bg-[#5242c5] rounded-xl w-1/4 h-8'>
-                        <p className='text-primary-text'>
-                            Fixtures
-                        </p>
-                    </button>
-                    <button className=' bg-[#5242c5] rounded-xl w-1/4 h-8'>
-                        <p className='text-primary-text'>
-                            Stats
-                        </p>
-                    </button>
-                </div>
-                {
+        <div className='flex flex-col items-center'>
+            <div className='bg-button h-48 w-2/4 mt-0 rounded-lg hidden sm:flex sm:mt-5 '>
+                    <img src={Goats} alt=""  className='object-cover h-full w-full rounded-lg '/>
+                    
+            </div>
+            <div className='bg-dark-bg sm:bg-navbar-bg  text-primary-text  flex flex-col items-center w-full sm:w-2/4 mt-0 sm:mt-5 mb-5 rounded-lg '>
+                
+               
+            {
                     isloaded ? <>
                         {
                             Leagues.map(({ Image, LeagueName, LeagueCountry, LeagueCode }) => {
                                 return <>
-                                    <div className=' p-3 '>
+                                    <div className=' p-3  w-full  border-b-2 border-dark-bg '>
                                         {/* Header   */}
                                         <div className='flex justify-between pb-3'>
                                             <div className='text-lg font-Chakra flex gap-2'>
@@ -151,7 +142,9 @@ const Football = () => {
                         }
                     </>
                         : <div className='h-screen'>Loading....</div>
-                } </div >
+                } 
+            </div >
+            </div>
         </>
 
     )

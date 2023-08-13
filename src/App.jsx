@@ -10,7 +10,8 @@ function App() {
 
   return (
     <>
-      <Navbar />
+    <div className="bg-dark-bg ">
+    <Navbar />
       <Main />
       <Routes>
         <Route index element={<Football />} />
@@ -18,6 +19,8 @@ function App() {
         <Route path='/cricket' element={<Cricket />} />
 
       </Routes>
+    </div>
+   
     </>
   )
 }
