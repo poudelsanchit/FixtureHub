@@ -21,7 +21,6 @@ function App() {
         <Route path='/football/:leagueid' element={<SingleStandings />} />
       </Routes>
     </div>
-   
     </>
   )
 }

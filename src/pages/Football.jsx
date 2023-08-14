@@ -10,7 +10,23 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const Football = () => {
- 
+    const Prom = [
+        {
+            promotion: 'UEFA Champions League Group Stage',
+            color: `w-2 h-2 bg-[#6e57e0] rounded-sm`,
+        },
+        {
+            promotion: 'Europa League Group Stage',
+            color: `w-2 h-2 bg-[#FFA500] rounded-sm`,
+
+        },
+        {
+            promotion:'Relegation',
+            color: `w-2 h-2 bg-[#FF0000] rounded-sm`,
+    
+        },
+    ]
+    
     const navigate = useNavigate();
     const navigateToLeague= (id) =>{
         navigate(`/football/:${id }`)
@@ -78,18 +94,7 @@ const Football = () => {
 
         }
     ];
-    const Prom=[
-        {
-            promotion:'UEFA Champions League Group Stage',
-            color:`w-2 h-2 bg-[#6e57e0] rounded-sm`,
-        },
-        {
-            promotion:'Europa League Group Stage',
-            color: `w-2 h-2 bg-[#FFA500] rounded-sm`,
-
-        }
-
-    ]
+  
     console.clear();
     console.log(DummyData);
 
@@ -187,16 +192,11 @@ const Football = () => {
                 </div>
                 </>
                 }
-               
-                    
-                    )
-            }
-                
-                       
+               )
+            }       
                 </div>
             </div >
         </>
-
     )
 }
 
