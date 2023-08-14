@@ -64,14 +64,28 @@ const Football = () => {
             LeagueCode: bundesliga,
 
         }
+    ];
+    const Prom=[
+        {
+            promotion:'UEFA Champions League Group Stage',
+            color:`w-2 h-2 bg-[#6e57e0] rounded-sm`,
+        },
+        {
+            promotion:'Europa League Group Stage',
+            color: `w-2 h-2 bg-[#FFA500] rounded-sm`,
+
+        }
     ]
     return (
         <>
-        <div className='flex flex-col items-center'>
-            <div className='bg-button h-48 w-2/4 mt-0 rounded-lg hidden sm:flex sm:mt-5 '>
+        <div className='flex flex-col items-center pb-10'>
+            <div className='bg-button h-48  w-[95%] sm:w-2/4 mt-0 rounded-lg  sm:flex sm:mt-5 '>
                     <img src={Goats} alt=""  className='object-cover h-full w-full rounded-lg '/>
                     
             </div>
+           <div className='text-primary-text w-full sm:w-2/4 font-Montserrat font-semibold text-2xl mt-5 px-3'>Standings
+           <div className='m-0 h-[0.1rem] w-full bg-button'></div>
+           </div> 
             <div className='bg-dark-bg sm:bg-navbar-bg  text-primary-text  flex flex-col items-center w-full sm:w-2/4 mt-0 sm:mt-5 mb-5 rounded-lg '>
                 
                
@@ -92,7 +106,7 @@ const Football = () => {
                                                     <p className='text-sm text-secondary-text'>{LeagueCountry}</p>
                                                 </div>
                                             </div>
-                                            <div className='flex items-center text-2xl'>
+                                            <div className='flex items-center justify-center text-2xl cursor-pointer w-8 h-8 rounded-md hover:bg-dark-bg'>
                                                 <BsChevronRight />
                                             </div>
                                         </div>
@@ -144,7 +158,26 @@ const Football = () => {
                         : <div className='h-screen'>Loading....</div>
                 } 
             </div >
-            </div>
+          
+            <div className='flex flex-col w-full sm:w-2/4 px-3'>
+            {
+                Prom.map(({promotion,color})=>
+                { return <>
+                
+                <div className='flex flex-row items-center gap-2 text-primary-text font-Chakra '>
+                    <div  className={ color}  ></div>
+                    <div>{promotion} </div>
+                </div>
+                </>
+                }
+               
+                    
+                    )
+            }
+                
+                       
+                </div>
+            </div >
         </>
 
     )
