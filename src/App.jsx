@@ -4,6 +4,7 @@ import Football from "./pages/Football"
 import Cricket from "./pages/Cricket"
 import BasketBall from "./pages/Basketball"
 import Main from "./pages/Main"
+import SingleStandings from "./pages/SingleStandings"
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Route index element={<Football />} />
         <Route path='/basketball' element={<BasketBall />} />
         <Route path='/cricket' element={<Cricket />} />
-
+        <Route path='/football/:leagueid' element={<SingleStandings />} />
       </Routes>
     </div>
    

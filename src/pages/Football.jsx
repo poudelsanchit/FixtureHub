@@ -1,38 +1,47 @@
 import React from 'react'
 import PremierLeague from '../assets/plwhite.png'
+import Spain  from './test.json'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
 import Goats from '../assets/goat.jpg'
-
 import Bundesliga from '../assets/bundesliga.png'
 import { BsChevronRight } from 'react-icons/bs'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const Football = () => {
+ 
+    const navigate = useNavigate();
+    const navigateToLeague= (id) =>{
+        navigate(`/football/:${id }`)
+    }
+ 
     const [isloaded, setIsLoaded] = useState(false);
     const [teams, setTeams] = useState([]);
+    const [DummyData, setDummyData] = useState([]);
     const [laliga, setLaliga] = useState([]);
     const [seriea, setSerieA] = useState([]);
     const [bundesliga, setBundesliga] = useState([]);
 
 
     const fetchTable = async () => {
+        setDummyData(Spain);
         //premier league
         const teams = await axios.get(`https://apiv3.apifootball.com/?action=get_standings&league_id=152&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
         setTeams(teams.data);
         //laliga
         const laliga = await axios.get(`https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
         setLaliga(laliga.data);
+        //Serie A
+          const seriea = await axios.get(`https://apiv3.apifootball.com/?action=get_standings&league_id=207&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
+          setSerieA(seriea.data);
+          setIsLoaded(true);
         //bundesliga
         const bundesliga = await axios.get(`https://apiv3.apifootball.com/?action=get_standings&league_id=175&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
         setBundesliga(bundesliga.data);
-        //Serie A
-        const seriea = await axios.get(`https://apiv3.apifootball.com/?action=get_standings&league_id=207&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
-        setSerieA(seriea.data);
-        setIsLoaded(true);
+     
 
     }
-    console.log(bundesliga.slice(0, 5));
     useEffect(() => {
         fetchTable();
     }, []);
@@ -42,12 +51,14 @@ const Football = () => {
             LeagueName: 'Premier League',
             LeagueCountry: 'England',
             LeagueCode: teams,
+            LeagueId: '152',
         },
         {
             Image: Laliga,
             LeagueName: 'Laliga',
             LeagueCountry: 'Spain',
             LeagueCode: laliga,
+            LeagueId: '302',
 
         },
         {
@@ -55,6 +66,7 @@ const Football = () => {
             LeagueName: 'Serie A',
             LeagueCountry: 'Italy',
             LeagueCode: seriea,
+            LeagueId: '207',
 
         },
         {
@@ -62,6 +74,7 @@ const Football = () => {
             LeagueName: 'Bundesliga',
             LeagueCountry: 'Germany',
             LeagueCode: bundesliga,
+            LeagueId: '175',
 
         }
     ];
@@ -75,7 +88,11 @@ const Football = () => {
             color: `w-2 h-2 bg-[#FFA500] rounded-sm`,
 
         }
+
     ]
+    console.clear();
+    console.log(DummyData);
+
     return (
         <>
         <div className='flex flex-col items-center pb-10'>
@@ -92,7 +109,7 @@ const Football = () => {
             {
                     isloaded ? <>
                         {
-                            Leagues.map(({ Image, LeagueName, LeagueCountry, LeagueCode }) => {
+                            Leagues.map(({ Image, LeagueName, LeagueCountry, LeagueCode,LeagueId }) => {
                                 return <>
                                     <div className=' p-3  w-full  border-b-2 border-dark-bg '>
                                         {/* Header   */}
@@ -106,7 +123,7 @@ const Football = () => {
                                                     <p className='text-sm text-secondary-text'>{LeagueCountry}</p>
                                                 </div>
                                             </div>
-                                            <div className='flex items-center justify-center text-2xl cursor-pointer w-8 h-8 rounded-md hover:bg-dark-bg'>
+                                            <div className='flex items-center justify-center text-2xl cursor-pointer w-8 h-8 rounded-md hover:bg-dark-bg' onClick={e=>navigateToLeague(LeagueId)}>
                                                 <BsChevronRight />
                                             </div>
                                         </div>
