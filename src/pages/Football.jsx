@@ -79,7 +79,7 @@ const Football = () => {
     return (
         <>
         <div className='flex flex-col items-center pb-10'>
-            <div className='bg-button h-48  w-[95%] sm:w-2/4 mt-0 rounded-lg  sm:flex sm:mt-5 '>
+            <div className='bg-button h-48  w-[95%] sm:w-2/4 mt-2 rounded-lg  sm:flex sm:mt-5  '>
                     <img src={Goats} alt=""  className='object-cover h-full w-full rounded-lg '/>
                     
             </div>
