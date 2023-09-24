@@ -75,22 +75,21 @@ const SingleStandings = ({isOpen}) => {
                             <tbody className='font-bold border-b-[0.1px] border-secondary-bg mb-2 h-10'>
                                 <tr>
                                     <td> </td>
-                                    <td>Rank</td>
-
-                                    <td>Club</td>
-                                    <td className='p-0 w-10'>MP</td>
-                                    <td className='p-0 w-10'>W</td>
-                                    <td className='p-0 w-10'>D</td>
-                                    <td className='p-0 w-10'>L</td>
-                                    <td className='p-0 w-10'>GF</td>
-                                    <td className='p-0 w-10'>GA</td>
-                                    <td className='p-0 w-10'>GD</td>
-                                    <td className='p-0 w-10'>Pts</td>
+                                    <td className='p-0 w-2 sm:w-auto'>Rank</td>
+                                    <td className='p-0 w-15 sm:w-auto'>Club</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>MP</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>W</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>D</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>L</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>GF</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>GA</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>GD</td>
+                                    <td className='p-0 w-[1.27rem] sm:w-10'>Pts</td>
                                 </tr>
 
                             </tbody>
                             {
-                                teams.map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GF, overall_league_GA, overall_league_PTS }) => {
+                                teams.map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GF, overall_league_GA, overall_league_PTS,team_badge }) => {
                                     return <>
                                         <tbody >
 
@@ -99,9 +98,14 @@ const SingleStandings = ({isOpen}) => {
                                                 <td>
                                                     <div className={overall_promotion == "Promotion - Champions League (Group Stage: )" ? 'w-[1px] h-11 bg-button' : overall_promotion == 'Promotion - Europa League (Group Stage: )' ? 'w-[1px] h-11 bg-[#FFA500]' : overall_league_position <= 18 ? '' : 'w-[1px] h-11 bg-[#FF0000]'}></div>
                                                 </td>
-                                                <td className='w-12'>{overall_league_position}</td>
+                                                <td className='w-3'>{overall_league_position}</td>
 
-                                                <td >{team_name}</td>
+                                                <td >
+                                                    <div className='flex items-center gap-3'>
+                                                    <img src={team_badge} alt=""  className='h-6'/>
+                                                    <div>{team_name}</div>
+                                                    </div>
+                                                </td>
                                                 <td >{overall_league_payed}</td>
                                                 <td >{overall_league_W}</td>
                                                 <td >{overall_league_D}</td>

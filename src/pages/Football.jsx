@@ -153,13 +153,25 @@ const Football = () => {
 
                                                 </tbody>
                                                 {
-                                                    LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS,overall_league_GF }) => {
+                                                    LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS,overall_league_GF,team_badge }) => {
                                                         return <>
                                                             <tbody>
 
                                                                 <tr className='h-10'>
-                                                                    <td> <div className={overall_promotion !== "Promotion - Champions League (Group Stage: )" ? 'w-[1px] h-11 bg-[#FFA500]' : 'w-[1px] h-11 bg-button'}></div></td>
-                                                                    <td >{team_name}</td>
+                                                                    <td>
+                                                                         <div className={overall_promotion !== "Promotion - Champions League (Group Stage: )" ? 'w-[1px] h-11 bg-[#FFA500]' : 'w-[1px] h-11 bg-button'}>
+                                                                         </div>
+                                                                    </td>
+                                                                    <td >    
+                                                                        <div className='flex items-center gap-3'>
+                                                                             <img src={team_badge} alt=""  className='h-7'/>
+                                                                             <div>{team_name}</div>
+                                                                        </div>
+                                                   
+                                                                     </td>
+                                                                
+
+
                                                                     <td >{overall_league_payed}</td>
                                                                     <td >{overall_league_W}</td>
                                                                     <td >{overall_league_D}</td>
