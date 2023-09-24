@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { BsMoonFill, BsSun } from 'react-icons/bs';
 import { BsSunFill } from 'react-icons/bs';
 import { CgMenuLeft, CgArrowDown } from 'react-icons/cg';
@@ -11,6 +11,7 @@ import { BiFootball, BiBaseball, BiCricketBall } from 'react-icons/bi';
 import { useState, useEffect, useRef } from 'react';
 import Sidebar from './Sidebar';
 const Navbar = ({setIsOpe}) => {
+    const navigate= useNavigate();
     let menuRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [theme, setTheme] = useState("dark");
@@ -42,7 +43,9 @@ const Navbar = ({setIsOpe}) => {
         document.addEventListener("mousedown", handler);
     }, [])
     var i=0;
-
+const navigateToHome=()=>{
+    navigate('/');
+}
 useEffect(()=>{
         setIsOpe(isOpen)
 
@@ -59,9 +62,10 @@ useEffect(()=>{
                     <div className='bg-[#FF0000] w-2 h-2 absolute rounded-lg -top-0.5 -right-0.5' />
 
                 </div>
-                <div className="text-xl font-Chakra font-semibold">
+                <div className="text-xl font-Chakra font-semibold cursor-pointer" onClick={navigateToHome}>
                     FixtureHub
                 </div>
+                
               <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}/>
 
                 {/* <div className=" text-xl gap-16 pt-2 hidden">
