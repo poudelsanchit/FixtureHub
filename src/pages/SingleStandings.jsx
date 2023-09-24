@@ -32,9 +32,24 @@ const SingleStandings = ({isOpen}) => {
         setTeams(team.data);
         setIsLoaded(true);
     }
+    const [stats,setStats]= useState([]);
+    const FetchStats= async()=>{
+        const stats= await axios.get(`https://apiv3.apifootball.com/?action=get_topscorers&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b&league_id=${LeagueId}`);
+        setStats(stats.data); 
+        console.log(stats)
+      
+    }
+    const [playerDetails,setPlayerDetails]= useState([]);
+
+    const fetchPlayerDetails= async()=>{
+        const playerDetails= await axios.get(`https://apiv3.apifootball.com/?action=get_players&player_id=${PlayerId}&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
+        setPlayerDetails(playerDetails.data);
+    }
     useEffect(() => {
         fetchTable();
-    }, [    LeagueId]);
+        FetchStats();
+        fetchPlayerDetails();
+    }, [LeagueId]);
     useEffect(()=>{
         setLeagueId(leagueid.substr(1, leagueid.length - 1))
     },[isOpen])
@@ -65,14 +80,15 @@ const SingleStandings = ({isOpen}) => {
                       
                     </div>
                     <div className='bg-navbar-bg rounded-ss-md  rounded-se-md flex flex-col text-xs sm:text-base'>
-                    <div className='flex flex-row border-b-[2px] border-secondary-bg '>
+                    <div className='flex flex-row border-b-[1px] border-[#2a2525] '>
                             <div className={togglePage===1?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-ss-md':'w-[50%] flex justify-center py-2 cursor-pointer'} onClick={()=>setTogglePage(1)}>Standings</div>
                             <div className={togglePage===2?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-se-md':'w-[50%] flex justify-center py-2 cursor-pointer'}   onClick={()=>setTogglePage(2)}>Stats</div>
                         </div>
                         {
-                            togglePage===1?<table className='w-full'>
+                            togglePage===1?
+                            <table className='w-full'>
 
-                            <tbody className='font-bold border-b-[0.1px] border-secondary-bg mb-2 h-10'>
+                            <tbody className='font-bold border-b-[0.1px] border-[#1d1919] mb-2 h-10'>
                                 <tr>
                                     <td> </td>
                                     <td className='p-0 w-2 sm:w-auto'>Rank</td>
@@ -123,34 +139,48 @@ const SingleStandings = ({isOpen}) => {
 
                         </table>
                         :
-                           <table className='w-full'>
-                          
-                          <tbody className='font-bold border-b-[0.1px] border-secondary-bg mb-2 h-10'>
-                                <tr>
-                                    <td className='p-0 w-1'> </td>
-                                    <td className='p-0 w-10'>Player</td>
-                                    <td className='p-0 w-10'>Goals</td>
+                        <table className='w-full'>
 
+                        <tbody className='font-bold border-b-[2px] border-[#1d1919] mb-2 h-10'>
+                            <tr>
+                                <td className='p-0 w-12 sm:w-8'></td>
+                                <td className='p-0 w-15 sm:w-auto'>Player</td>
+                            
+                                <td className='pr-2 w-[1.27rem] sm:w-10'>Goals</td>
+                            </tr>
 
-                                   
-                                </tr>
+                        </tbody>
+                        
+                        {
+                                stats.map(({ player_place,player_name,team_name,goals }) => {
+                                    return <>
+                                        <tbody >
 
-                            </tbody>
-                               <tbody >
+                                            <tr className='h-14 border-b-[0.1px] border-[#1e1d1d]'>
 
-                                            <tr className='h-10'>
-                                            <td>
-                                                  1
+                                               
+                                                <td className='w-3'>{player_place}</td>
+
+                                                <td >
+                                                    <div className='flex flex-row items-center justify-start gap-3'>
+                                                        <img src='' alt=""  className='h-7 rounded-sm'/>
+                                                        <div className='flex flex-col items-start justify-center'>
+                                                            <div className='font-Roboto font-semibold text-lg'>{player_name}</div>
+                                                            <div className='font-Roboto'>{team_name}</div>
+                                                        </div>
+                                                 
+
+                                                    </div>
                                                 </td>
-                                                <td>
-                                                  Halland
-                                                </td>
-                                                <td className='w-12'>2</td>
-
-                                                
-
+                                              
+                                              
+                                                <td >{goals}</td>
                                             </tr>
                                         </tbody >
+                                    </>
+                                })
+                            }
+                                            
                           </table>
                         }
                         
