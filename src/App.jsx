@@ -6,6 +6,7 @@ import BasketBall from "./pages/Basketball"
 import Main from "./pages/Main"
 import SingleStandings from "./pages/SingleStandings"
 import { useState } from "react"
+import BottomNavBar from "./Componnets/BottomNavBar"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/cricket' element={<Cricket />} />
         <Route path='/football/:leagueid' element={<SingleStandings  isOpen={isOpen}/>} />
       </Routes>
+      <BottomNavBar/>
     </div>
     </>
   )

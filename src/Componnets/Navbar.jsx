@@ -55,8 +55,8 @@ useEffect(()=>{
         <div className=' text-primary-text  bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999' >
             <div className="flex justify-start gap-5" ref={menuRef}>
                 {/* Menu */}
-                <div className='text-xl relative flex justify-center items-center ml-3 p-1  border-2 border-[#282828] rounded-lg'>
-                    <div onClick={() => setIsOpen((value) => true)} className='cursor-pointer'>
+                <div className='text-xl relative flex justify-center items-center ml-3 p-1  border-2 border-[#282828] rounded-lg' onClick={() => setIsOpen((value) => true)}>
+                    <div  className='cursor-pointer'>
                         <CgMenuLeft />
                     </div>
                     <div className='bg-[#FF0000] w-2 h-2 absolute rounded-lg -top-0.5 -right-0.5' />
