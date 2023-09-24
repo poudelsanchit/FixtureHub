@@ -9,7 +9,8 @@ import { FaChevronDown } from 'react-icons/fa'
 import { BiFootball, BiBaseball, BiCricketBall } from 'react-icons/bi';
 
 import { useState, useEffect, useRef } from 'react';
-const Navbar = () => {
+import Sidebar from './Sidebar';
+const Navbar = ({setIsOpe}) => {
     let menuRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const [theme, setTheme] = useState("dark");
@@ -23,8 +24,12 @@ const Navbar = () => {
             html.classList.remove('dark');
             setTheme('light')
         }
+       console.log(theme) 
 
     }
+    useEffect(()=>{
+            localStorage.setItem('theme',theme);
+    },[theme])
     useEffect(() => {
         const html = document.querySelector('html');
         html.classList.add('dark');
@@ -36,9 +41,15 @@ const Navbar = () => {
         };
         document.addEventListener("mousedown", handler);
     }, [])
+    var i=0;
 
+useEffect(()=>{
+        setIsOpe(isOpen)
+
+
+},[isOpen])
     return (
-        <div className=' text-primary-text bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999' >
+        <div className=' text-primary-text  bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999' >
             <div className="flex justify-start gap-5" ref={menuRef}>
                 {/* Menu */}
                 <div className='text-xl relative flex justify-center items-center ml-3 p-1  border-2 border-[#282828] rounded-lg'>
@@ -51,70 +62,7 @@ const Navbar = () => {
                 <div className="text-xl font-Chakra font-semibold">
                     FixtureHub
                 </div>
-                {isOpen ?
-                    <div className='transition-all ease-in-out absolute flex flex-col gap-5 rounded-r-2xl left-0 h-screen w-2/3 sm:w-1/6 top-0 z-50 bg-sidebar-bg  '>
-
-                        <div className='flex justify-between'>
-                            <div className='flex flex-row gap-2 text-[0.6rem] mt-5 ml-3 text-[#2a2c30]'>
-                                <BsFillCircleFill />
-                                <BsFillCircleFill />
-                                <BsFillCircleFill />
-                            </div>
-                            <div onClick={() => setIsOpen((value) => false)} className='cursor-pointer'>
-                                <BsArrowBarLeft className=' mt-5 mr-3 text-xl text-[#7c818a]' />
-                            </div>
-                        </div>
-                        <div className='pl-6 '>
-                            <div className='text-base font-Montserrat tracking-tight font-semibold flex items-center gap-2 '>
-                                <FaChevronDown className='text-base ' />
-                                Sports
-                            </div>
-                            <div className=' text-sm font-Montserrat tracking-tight text-[#7a818a] mr-4 mt-2'>
-                                <NavLink to='/'>
-                                    {({ isActive, isPending }) => (
-
-                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"}>
-                                            <div className='w-3 h-3 bg-[#afd3ac] rounded-sm' />
-                                            Football
-                                        </div>
-                                    )}
-
-                                </NavLink >
-                                <NavLink to='basketball/'>
-                                    {({ isActive, isPending }) => (
-
-                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"}>
-                                            <div className='w-3 h-3 bg-[#b797fc] rounded-sm' />
-                                            Basketball
-                                        </div>
-                                    )}
-
-                                </NavLink>
-                                <NavLink to='/cricket'>
-
-                                    {({ isActive, isPending }) => (
-
-                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"}>
-                                            <div className='w-3 h-3 bg-[#a7c3dd] rounded-sm' />
-                                            Cricket
-                                        </div>
-                                    )}
-
-                                </NavLink>
-
-
-                            </div>
-                        </div>
-                        {/* <div className=" hidden close-icon"><IoCloseOutline className='flex items-end text-2xl cursor-pointer md:hidden dark:text-primary' onClick={() => setIsOpen((value) => false)} /></div>
-                        <NavLink className='pr-4 pl-4 hidden' to={'/'} onClick={() => setIsOpen((value) => false)}>Football</NavLink>
-                        <NavLink className='pr-4 pl-4 hidden' to={'/basketball'} onClick={() => setIsOpen((value) => false)} >BasketBall</NavLink>
-                        <NavLink className='pr-4 pl-4 hidden' to={'/cricket'} onClick={() => setIsOpen((value) => false)}> Cricket</NavLink> */}
-
-                    </div>
-                    :
-                    null
-
-                }
+              <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}/>
 
                 {/* <div className=" text-xl gap-16 pt-2 hidden">
 

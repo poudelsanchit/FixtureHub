@@ -8,6 +8,7 @@ import Bundesliga from '../assets/bundesliga.png'
 import { BsChevronRight } from 'react-icons/bs'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { LeagueData } from "../Data/Leagues";
 import axios from 'axios'
 const Football = () => {
     const Prom = [
@@ -94,21 +95,19 @@ const Football = () => {
 
         }
     ];
-  
-    console.clear();
-    console.log(DummyData);
+   
 
     return (
         <>
         <div className='flex flex-col items-center pb-10'>
-            <div className='bg-button h-48  w-[95%] sm:w-2/4 mt-2 rounded-lg  sm:flex sm:mt-5  '>
+            <div className='bg-button h-48  w-[95%] lg:w-2/4 mt-2 rounded-lg  sm:flex sm:mt-5  '>
                     <img src={Goats} alt=""  className='object-cover h-full w-full rounded-lg '/>
                     
             </div>
-           <div className='text-primary-text w-full sm:w-2/4 font-Montserrat font-semibold text-2xl mt-5 px-3'>Standings
+           <div className='text-primary-text w-full md:w-2/4 font-Montserrat font-semibold text-2xl mt-5 px-3'>Standings
            <div className='m-0 h-[0.1rem] w-full bg-button'></div>
            </div> 
-            <div className='bg-dark-bg sm:bg-navbar-bg  text-primary-text  flex flex-col items-center w-full sm:w-2/4 mt-0 sm:mt-5 mb-5 rounded-lg '>
+            <div className='bg-dark-bg lg:bg-navbar-bg  text-primary-text  flex flex-col items-center w-full lg:w-2/4 mt-0 sm:mt-5 mb-5 rounded-lg '>
                 
                
             {
@@ -140,16 +139,21 @@ const Football = () => {
                                                     <tr>
                                                         <td> </td>
                                                         <td>Team</td>
-                                                        <td className='p-0 w-10'>MP</td>
-                                                        <td className='p-0 w-10'>W</td>
-                                                        <td className='p-0 w-10'>D</td>
-                                                        <td className='p-0 w-10'>L</td>
-                                                        <td className='p-0 w-10'>Pts</td>
+                                                        <td className='p-0 w-10 '>MP</td>
+                                                        <td className='p-0 w-10 '>W</td>
+                                                        <td className='p-0 w-10 '>D</td>
+                                                        <td className='p-0 w-10 '>L</td>
+                                                        <td className='p-0 w-10 hidden md:table-cell	'>GF</td>
+                                                        <td className='p-0 w-10 hidden md:table-cell	'>GA</td>
+                                                        <td className='p-0 w-10 hidden md:table-cell	'>GD</td>
+                                                        <td className='p-0 w-10 '>Pts</td>
+                                                        
+
                                                     </tr>
 
                                                 </tbody>
                                                 {
-                                                    LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS }) => {
+                                                    LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS,overall_league_GF }) => {
                                                         return <>
                                                             <tbody>
 
@@ -160,7 +164,12 @@ const Football = () => {
                                                                     <td >{overall_league_W}</td>
                                                                     <td >{overall_league_D}</td>
                                                                     <td >{overall_league_L}</td>
+                                                                    <td className='hidden md:table-cell	' >{overall_league_GF}</td>
+                                                                    <td className='hidden md:table-cell	' >{overall_league_GA}</td>
+                                                                    <td className='hidden md:table-cell	' >{overall_league_GF-overall_league_GA}
+                                                                    </td>
                                                                     <td >{overall_league_PTS}</td>
+                                                            
                                                                 </tr>
                                                             </tbody >
                                                         </>

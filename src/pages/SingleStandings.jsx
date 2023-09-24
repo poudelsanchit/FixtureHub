@@ -7,9 +7,9 @@ import PremierLeague from '../assets/plwhite.png'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
 import Bundesliga from '../assets/bundesliga.png'
-import Spain from './test.json'
 
-const SingleStandings = () => {
+const SingleStandings = ({isOpen}) => {
+    const[togglePage,setTogglePage]= useState(1);
     const navigate = useNavigate();
     const [isLoaded, setIsLoaded] = useState(false);
     const Prom = [
@@ -25,8 +25,7 @@ const SingleStandings = () => {
 
     ]
     const { leagueid } = useParams();
-    let LeagueId = leagueid.substr(1, leagueid.length - 1);
-
+    const [LeagueId,setLeagueId]= useState(leagueid.substr(1, leagueid.length - 1));
     const [teams, setTeams] = useState([]);
     const fetchTable = async () => {
         const team = await axios.get(`https://apiv3.apifootball.com/?action=get_standings&league_id=${LeagueId}&APIkey=a875bbb5a424ceba7ec9c22e5f5e093a512f103a27f00d5b053859fcf0d9f94b`);
@@ -35,17 +34,20 @@ const SingleStandings = () => {
     }
     useEffect(() => {
         fetchTable();
-    }, []);
-
+    }, [    LeagueId]);
+    useEffect(()=>{
+        setLeagueId(leagueid.substr(1, leagueid.length - 1))
+    },[isOpen])
     return (
         <>
+     
             {isLoaded ? <div className='w-full flex flex-col items-center justify-center bg-dark-bg '>
 
-                <div className=' p-3  sm:w-2/4  border-b-2 border-dark-bg text-primary-text'>
+                <div className=' p-3  md:w-3/5 w-full  border-b-2 border-dark-bg text-primary-text'>
                     {/* Header   */}
                   
                     <div className='flex pb-3 items-center gap-5'>
-                    <div className='text-primary-text text-lg p-1  bg-button hover:bg-button-hover rounded-md cursor-pointer ' onClick={()=> navigate(-1)}>
+                    <div className='text-primary-text text-lg p-1  bg-button hover:bg-button-hover rounded-md cursor-pointer ' onClick={()=> navigate('/')}>
                             <BsChevronLeft />
                         </div>
                         <div className='text-lg font-Chakra flex gap-2'>
@@ -62,11 +64,15 @@ const SingleStandings = () => {
                         </div>
                       
                     </div>
-                    <div className='bg-navbar-bg rounded-md flex'>
+                    <div className='bg-navbar-bg rounded-ss-md  rounded-se-md flex flex-col text-xs sm:text-base'>
+                    <div className='flex flex-row border-b-[2px] border-secondary-bg '>
+                            <div className={togglePage===1?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-ss-md':'w-[50%] flex justify-center py-2 cursor-pointer'} onClick={()=>setTogglePage(1)}>Standings</div>
+                            <div className={togglePage===2?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-se-md':'w-[50%] flex justify-center py-2 cursor-pointer'}   onClick={()=>setTogglePage(2)}>Stats</div>
+                        </div>
+                        {
+                            togglePage===1?<table className='w-full'>
 
-                        <table className='w-full'>
-
-                            <tbody className='font-bold border-b-2 border-secondary-bg mb-2 h-10'>
+                            <tbody className='font-bold border-b-[0.1px] border-secondary-bg mb-2 h-10'>
                                 <tr>
                                     <td> </td>
                                     <td>Rank</td>
@@ -112,6 +118,39 @@ const SingleStandings = () => {
                             }
 
                         </table>
+                        :
+                           <table className='w-full'>
+                          
+                          <tbody className='font-bold border-b-[0.1px] border-secondary-bg mb-2 h-10'>
+                                <tr>
+                                    <td className='p-0 w-1'> </td>
+                                    <td className='p-0 w-10'>Player</td>
+                                    <td className='p-0 w-10'>Goals</td>
+
+
+                                   
+                                </tr>
+
+                            </tbody>
+                               <tbody >
+
+                                            <tr className='h-10'>
+                                            <td>
+                                                  1
+                                                </td>
+                                                <td>
+                                                  Halland
+                                                </td>
+                                                <td className='w-12'>2</td>
+
+                                                
+
+                                            </tr>
+                                        </tbody >
+                          </table>
+                        }
+                        
+                     
                     </div>
                 </div >
                 <div className='flex flex-col w-full sm:w-2/4 px-3'>
