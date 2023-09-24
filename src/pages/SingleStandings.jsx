@@ -7,6 +7,7 @@ import PremierLeague from '../assets/plwhite.png'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
 import Bundesliga from '../assets/bundesliga.png'
+import PlayerDetail from '../Componnets/PlayerDetail';
 
 const SingleStandings = ({isOpen}) => {
     const[togglePage,setTogglePage]= useState(1);
@@ -48,8 +49,7 @@ const SingleStandings = ({isOpen}) => {
     useEffect(() => {
         fetchTable();
         FetchStats();
-        fetchPlayerDetails();
-    }, [LeagueId]);
+  }, [LeagueId]);
     useEffect(()=>{
         setLeagueId(leagueid.substr(1, leagueid.length - 1))
     },[isOpen])
@@ -152,10 +152,12 @@ const SingleStandings = ({isOpen}) => {
                         </tbody>
                         
                         {
-                                stats.map(({ player_place,player_name,team_name,goals }) => {
+                                stats.map(({ player_place,player_name,team_name,goals,player_key }) => {
+                                    
                                     return <>
+                                    
                                         <tbody >
-
+                                       
                                             <tr className='h-14 border-b-[0.1px] border-[#1e1d1d]'>
 
                                                
@@ -163,10 +165,11 @@ const SingleStandings = ({isOpen}) => {
 
                                                 <td >
                                                     <div className='flex flex-row items-center justify-start gap-3'>
-                                                        <img src='' alt=""  className='h-7 rounded-sm'/>
+                                                        <PlayerDetail key={player_key}  id={player_key}/>
                                                         <div className='flex flex-col items-start justify-center'>
                                                             <div className='font-Roboto font-semibold text-lg'>{player_name}</div>
                                                             <div className='font-Roboto'>{team_name}</div>
+                                                       
                                                         </div>
                                                  
 
@@ -187,6 +190,8 @@ const SingleStandings = ({isOpen}) => {
                      
                     </div>
                 </div >
+
+{togglePage==1?
                 <div className='flex flex-col w-full sm:w-2/4 px-3'>
                     {
                         Prom.map(({ promotion, color }) => {
@@ -205,9 +210,12 @@ const SingleStandings = ({isOpen}) => {
 
 
                 </div>
+                : null
+}
             </div>
                 : <div className='h-screen text-primary-text flex justify-center w-full sm:w-3/5 pt-5  '>Loading....</div>
-
+              
+                
             }
 
         </>
