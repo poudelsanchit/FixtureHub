@@ -11,7 +11,7 @@ const Cricket = () => {
      
   
     return (
-        <div className='bg-dark-bg text-primary-text h-screen flex items-center justify-center font-Chakra text-4xl'>
+        <div className='dark:bg-dark-bg bg-[#f1f2f4] dark:text-primary-text text-primary-light h-screen flex items-center justify-center font-Chakra text-4xl'>
             Coming Soon!!
           </div >
     )

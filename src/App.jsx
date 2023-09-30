@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-    <div className="bg-dark-bg ">
+    <div className="dark:bg-dark-bg  bg-[#f1f2f4]">
     <Navbar setIsOpe={setIsOpen}/>
       <Main />
       <Routes>

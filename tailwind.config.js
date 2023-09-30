@@ -22,10 +22,15 @@ export default {
       'secondary-bg': '#393E46',
       'primary-text': '#ffffff',
       'secondary-text': '#666666',
-      'button': '#6e57e0'
+      'button': '#6e57e0',
+      //light mode
+      'bg-light':"#ffffff",
+      'primary-light':"#000000"
 
     },
-    extend: {},
+    extend: {
+      
+    },
     fontFamily: {
       Montserrat: ['Montserrat', 'sans-serif'],
       Roboto: ['Roboto Mono', 'monospace'],

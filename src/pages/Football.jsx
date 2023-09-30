@@ -1,15 +1,18 @@
 import React from 'react'
-import PremierLeague from '../assets/plwhite.png'
+import PremierLeague from '../assets/premier.png'
+import PremierLeagueLight from '../assets/pllight.jpg'
+
 import Spain  from './test.json'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
 import Goats from '../assets/goat.jpg'
-import Bundesliga from '../assets/bundesliga.png'
+import Bundesliga from '../assets/bundesliga.jpg'
 import { BsChevronRight } from 'react-icons/bs'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { LeagueData } from "../Data/Leagues";
+import FootballLottie from "../assets/football.json";
 import axios from 'axios'
+import Lottie from 'lottie-react'
 const Football = () => {
     const Prom = [
         {
@@ -99,15 +102,17 @@ const Football = () => {
 
     return (
         <>
-        <div className='flex flex-col items-center pb-10'>
-            <div className='bg-button h-48  w-[95%] lg:w-2/4 mt-2 rounded-lg  sm:flex sm:mt-5  '>
-                    <img src={Goats} alt=""  className='object-cover h-full w-full rounded-lg '/>
+        <div className='flex flex-col items-center '>
+         
+            <div className=' h-48  w-[95%] lg:w-2/4 mt-2 rounded-lg  sm:mt-5  '>
+                    <img src={Goats} alt=""  className='object-cover h-full w-full rounded-lg  '/>
                     
             </div>
-           <div className='text-primary-text w-full md:w-2/4 font-Montserrat font-semibold text-2xl mt-5 px-3'>Standings
+            {/* <Lottie animationData={FootballLottie} className='h-48  w-[95%] lg:w-2/4'/> */}
+           <div className='dark:text-primary-text text-primary-light w-full md:w-2/4 font-Montserrat font-semibold text-2xl mt-5 px-3'>Standings
            <div className='m-0 h-[0.1rem] w-full bg-button'></div>
            </div> 
-            <div className='bg-dark-bg lg:bg-navbar-bg  text-primary-text  flex flex-col items-center w-full lg:w-2/4 mt-0 sm:mt-5 mb-5 rounded-lg '>
+            <div className='dark:bg-dark-bg bg-[#ffffff]  shadow-2xl  text-primary-text  flex flex-col items-center w-full lg:w-2/4 mt-0 sm:mt-5 mb-5 rounded-lg '>
                 
                
             {
@@ -115,23 +120,24 @@ const Football = () => {
                         {
                             Leagues.map(({ Image, LeagueName, LeagueCountry, LeagueCode,LeagueId }) => {
                                 return <>
-                                    <div className=' p-3  w-full  border-b-2 border-dark-bg '>
+                                    <div className=' p-3  w-full  border-b-2 dark:border-dark-bg border-[#e5e7eb] '>
                                         {/* Header   */}
                                         <div className='flex justify-between pb-3'>
                                             <div className='text-lg font-Chakra flex gap-2'>
 
-                                                <div className='w-8 flex items-center'>
+                                                <div className='w-9 flex items-center'>
+                                                    
                                                     <img src={Image} alt="" />
                                                 </div>
-                                                <div> <p className='font-bold'>{LeagueName}</p>
+                                                <div> <p className='font-bold dark:text-primary-text text-primary-light'>{LeagueName}</p>
                                                     <p className='text-sm text-secondary-text'>{LeagueCountry}</p>
                                                 </div>
                                             </div>
-                                            <div className='flex items-center justify-center text-2xl cursor-pointer w-8 h-8 rounded-md hover:bg-dark-bg' onClick={e=>navigateToLeague(LeagueId)}>
+                                            <div className='  bg-button hover:bg-button-hover flex items-center justify-center text-2xl cursor-pointer w-7 h-7 rounded-md hover:bg-dark-bg' onClick={e=>navigateToLeague(LeagueId)}>
                                                 <BsChevronRight />
                                             </div>
                                         </div>
-                                        <div className='bg-navbar-bg rounded-md flex'>
+                                        <div className='dark:bg-navbar-bg bg-[#ffffff] text-[#000000] dark:text-[#ffffff] rounded-md flex'>
 
                                             <table className='w-full'>
 
@@ -153,7 +159,7 @@ const Football = () => {
 
                                                 </tbody>
                                                 {
-                                                    LeagueCode.slice(0, 5).map(({ overall_league_position, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS,overall_league_GF,team_badge }) => {
+                                                    LeagueCode.slice(0, 5).map(({  team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_promotion, overall_league_GA, overall_league_PTS,overall_league_GF,team_badge }) => {
                                                         return <>
                                                             <tbody>
 
@@ -202,12 +208,12 @@ const Football = () => {
                 } 
             </div >
           
-            <div className='flex flex-col w-full sm:w-2/4 px-3'>
+            <div className='flex flex-col w-full sm:w-2/4 px-3 '>
             {
                 Prom.map(({promotion,color})=>
                 { return <>
                 
-                <div className='flex flex-row items-center gap-2 text-primary-text font-Chakra '>
+                <div className='flex flex-row items-center gap-2 dark:text-primary-text text-primary-light font-Chakra '>
                     <div  className={ color}  ></div>
                     <div>{promotion} </div>
                 </div>

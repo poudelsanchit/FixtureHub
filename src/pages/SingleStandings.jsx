@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BsChevronLeft } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom';
-import PremierLeague from '../assets/plwhite.png'
+import PremierLeague from '../assets/premier.png'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
 import Bundesliga from '../assets/bundesliga.png'
@@ -21,6 +21,11 @@ const SingleStandings = ({isOpen}) => {
         {
             promotion: 'Europa League Group Stage',
             color: `w-2 h-2 bg-[#FFA500] rounded-sm`,
+
+        },
+        {
+            promotion: 'Relegation',
+            color: `w-2 h-2 bg-[#FF0000] rounded-sm`,
 
         }
 
@@ -56,9 +61,9 @@ const SingleStandings = ({isOpen}) => {
     return (
         <>
      
-            {isLoaded ? <div className='w-full flex flex-col items-center justify-center bg-dark-bg '>
+            {isLoaded ? <div className='w-full flex flex-col items-center justify-center dark:bg-dark-bg bg-[#e5e7eb] '>
 
-                <div className=' p-3  md:w-3/5 w-full  border-b-2 border-dark-bg text-primary-text'>
+                <div className=' p-3  md:w-3/5 w-full   dark:text-primary-text text-primary-light'>
                     {/* Header   */}
                   
                     <div className='flex pb-3 items-center gap-5'>
@@ -79,10 +84,10 @@ const SingleStandings = ({isOpen}) => {
                         </div>
                       
                     </div>
-                    <div className='bg-navbar-bg rounded-ss-md  rounded-se-md flex flex-col text-xs sm:text-base'>
+                    <div className='dark:bg-navbar-bg bg-bg-light rounded-ss-md  rounded-se-md flex flex-col text-xs sm:text-base '>
                     <div className='flex flex-row border-b-[1px] border-[#2a2525] '>
-                            <div className={togglePage===1?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-ss-md':'w-[50%] flex justify-center py-2 cursor-pointer'} onClick={()=>setTogglePage(1)}>Standings</div>
-                            <div className={togglePage===2?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-se-md':'w-[50%] flex justify-center py-2 cursor-pointer'}   onClick={()=>setTogglePage(2)}>Stats</div>
+                            <div className={togglePage===1 ?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-ss-md':'w-[50%] flex justify-center py-2 cursor-pointer'}onClick={()=>setTogglePage(1)}>Standings</div>
+                            <div className={togglePage===2?'w-[50%] flex justify-center py-2 active cursor-pointer rounded-se-md':'w-[50%] flex justify-center py-2 cursor-pointer'}  onClick={()=>setTogglePage(2)}>Stats</div>
                         </div>
                         {
                             togglePage===1?
@@ -141,7 +146,7 @@ const SingleStandings = ({isOpen}) => {
                         :
                         <table className='w-full'>
 
-                        <tbody className='font-bold border-b-[2px] border-[#1d1919] mb-2 h-10'>
+                        <tbody className='font-bold border-b-[2px] dark:border-[#1e1d1d]  border-[#e5e7eb] mb-2 h-10'>
                             <tr>
                                 <td className='p-0 w-12 sm:w-8'></td>
                                 <td className='p-0 w-15 sm:w-auto'>Player</td>
@@ -158,7 +163,7 @@ const SingleStandings = ({isOpen}) => {
                                     
                                         <tbody >
                                        
-                                            <tr className='h-14 border-b-[0.1px] border-[#1e1d1d]'>
+                                            <tr className='h-14 border-b-[0.1px] dark:border-[#1e1d1d]  border-[#e5e7eb]'>
 
                                                
                                                 <td className='w-3'>{player_place}</td>
@@ -197,7 +202,7 @@ const SingleStandings = ({isOpen}) => {
                         Prom.map(({ promotion, color }) => {
                             return <>
 
-                                <div className='flex flex-row items-center gap-2 text-primary-text font-Chakra '>
+                                <div className='flex flex-row items-center gap-2 dark:text-primary-text text-primary-light font-Chakra '>
                                     <div className={color}  ></div>
                                     <div>{promotion} </div>
                                 </div>

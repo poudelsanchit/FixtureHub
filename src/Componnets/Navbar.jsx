@@ -52,17 +52,17 @@ useEffect(()=>{
 
 },[isOpen])
     return (
-        <div className=' text-primary-text  bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999' >
+        <div className=' text-primary-text  bg-bg-light dark:bg-navbar-bg pt-3 pb-3 top-0 sticky z-99999 shadow-2xl z-50' >
             <div className="flex justify-start gap-5" ref={menuRef}>
                 {/* Menu */}
                 <div className='text-xl relative flex justify-center items-center ml-3 p-1  border-2 border-[#282828] rounded-lg' onClick={() => setIsOpen((value) => true)}>
-                    <div  className='cursor-pointer'>
+                    <div  className='cursor-pointer text-dark-bg dark:text-primary-text'>
                         <CgMenuLeft />
                     </div>
                     <div className='bg-[#FF0000] w-2 h-2 absolute rounded-lg -top-0.5 -right-0.5' />
 
                 </div>
-                <div className="text-xl font-Chakra font-semibold cursor-pointer" onClick={navigateToHome}>
+                <div className="text-xl font-Chakra font-semibold cursor-pointer text-primary-light dark:text-primary-text" onClick={navigateToHome}>
                     FixtureHub
                 </div>
                 
@@ -95,8 +95,8 @@ useEffect(()=>{
                 </div> */}
                 <button onClick={handleThemeSwitcher} className='p-1  bg-button hover:bg-button-hover absolute top-3 right-8 rounded-md md:right-5 lg:right-10'>
                     {
-                        theme == 'light' ? <BsMoonFill />
-                            : <BsSunFill />
+                        theme == 'light' ? <BsSunFill />
+                            :  <BsMoonFill />
 
                     }
                 </button>

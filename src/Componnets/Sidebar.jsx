@@ -14,13 +14,13 @@ const Sidebar = ({isOpen,setIsOpen}) => {
 
                              
 {isOpen ?
-                    <div className='transition-all duration-1000  absolute flex flex-col gap-5 rounded-r-2xl left-0 h-screen w-2/3 sm:w-3/12 top-0 z-50 bg-sidebar-bg  '>
+                    <div className=' transition-all duration-1000  absolute flex flex-col gap-5 rounded-r-2xl left-0 h-screen w-2/3 sm:w-3/12 top-0 z-50 dark:bg-sidebar-bg  bg-[#ffffff]  '>
 
                         <div className='flex justify-between'>
                             <div className='flex flex-row gap-2 text-[0.6rem] mt-5 ml-3 text-[#2a2c30]'>
-                                <BsFillCircleFill />
-                                <BsFillCircleFill />
-                                <BsFillCircleFill />
+                                <BsFillCircleFill color='#FF0000'/>
+                                <BsFillCircleFill color='#fdbd1f'/>
+                                <BsFillCircleFill color='#4dea32'/>
                             </div>
                             <div onClick={() => setIsOpen((value) => false)} className='cursor-pointer'>
                                 <BsArrowBarLeft className=' mt-5 mr-3 text-xl text-[#7c818a]' />
@@ -34,8 +34,8 @@ const Sidebar = ({isOpen,setIsOpen}) => {
                             <div className=' text-sm font-Montserrat tracking-tight text-[#7a818a] mr-4 mt-2'>
                                 <NavLink to='/'>
                                     {({ isActive, isPending }) => (
-                                        <div className='flex flex-col'>
-                                             <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2 "}>
+                                        <div className='flex flex-col' >
+                                             <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2 "}  onClick={()=>setIsOpen((value)=>false)}>
                                             <div className='w-4 h-4 bg-[#afd3ac] rounded-sm ' />
                                             <div className='font-semibold font-Roboto'>Football</div>
                                             
@@ -70,8 +70,8 @@ const Sidebar = ({isOpen,setIsOpen}) => {
                                 <NavLink to='basketball/'>
                                     {({ isActive, isPending }) => (
 
-                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"}>
-                                            <div className='w-4 h-4 bg-[#b797fc] rounded-sm' />
+                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"} onClick={()=>setIsOpen((value)=>false)}>
+                                            <div className='w-4 h-4 bg-[#b797fc] rounded-sm'  />
                                             Basketball
                                         </div>
                                     )}
@@ -81,7 +81,7 @@ const Sidebar = ({isOpen,setIsOpen}) => {
 
                                     {({ isActive, isPending }) => (
 
-                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"}>
+                                        <div className={isActive ? 'py-2 px-2 flex items-center gap-2 bg-[#2d2f32] rounded-md text-[#e7e1e1]' : "py-2 px-1 flex items-center gap-2"}  onClick={()=>setIsOpen((value)=>false)}>
                                             <div className='w-4 h-4 bg-[#a7c3dd] rounded-sm' />
                                             Cricket
                                         </div>
