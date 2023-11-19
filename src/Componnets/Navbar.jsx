@@ -14,7 +14,7 @@ const Navbar = ({setIsOpe}) => {
     const navigate= useNavigate();
     let menuRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const [theme, setTheme] = useState("dark");
+    const [theme, setTheme] = useState(localStorage.getItem('theme'));
     const handleThemeSwitcher = () => {
         const html = document.querySelector('html');
         if (theme === 'light') {
@@ -47,7 +47,7 @@ const navigateToHome=()=>{
     navigate('/');
 }
 useEffect(()=>{
-        setIsOpe(isOpen)
+        setIsOpen(isOpen)
 
 
 },[isOpen])

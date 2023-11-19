@@ -1,7 +1,7 @@
-import PremierLeague from '../assets/plwhite.png'
+import PremierLeague from '../assets/premier.png'
 import Laliga from '../assets/laliga.png'
 import SerieA from '../assets/serie.png'
-import Bundesliga from '../assets/bundesliga.png'
+import Bundesliga from '../assets/bundesliga.jpg'
 export const LeagueData= [
     {
         Image: PremierLeague,

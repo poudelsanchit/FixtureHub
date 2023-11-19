@@ -1,19 +1,18 @@
 import React from 'react'
-import PremierLeague from '../assets/plwhite.png'
-import Laliga from '../assets/laliga.png'
-import SerieA from '../assets/serie.png'
-import Bundesliga from '../assets/bundesliga.png'
-import { BsChevronRight } from 'react-icons/bs'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import cricket from '../assets/cricket.json'
+import Lottie from 'lottie-react'
+
 const Cricket = () => {
-   
-     
-  
+
+
+
     return (
-        <div className='dark:bg-dark-bg bg-[#f1f2f4] dark:text-primary-text text-primary-light h-screen flex items-center justify-center font-Chakra text-4xl'>
-            Coming Soon!!
-          </div >
+        <div className='flex-col dark:bg-dark-bg bg-[#f1f2f4] dark:text-primary-text text-primary-light h-screen flex items-center  font-Chakra text-4xl'>
+            <Lottie animationData={cricket} className=' z-0 l:w-8/12 sm:w-6/12 lg:w-4/12  z-1' style={{}} />
+            <div>
+                Coming soon...
+            </div>
+        </div >
     )
 }
 

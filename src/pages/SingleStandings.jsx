@@ -97,15 +97,15 @@ const SingleStandings = ({isOpen}) => {
                                 <tr>
                                     <td> </td>
                                     <td className='p-0 w-2 sm:w-auto'>Rank</td>
-                                    <td className='p-0 w-15 sm:w-auto'>Club</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>MP</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>W</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>D</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>L</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>GF</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>GA</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>GD</td>
-                                    <td className='p-0 w-[1.27rem] sm:w-10'>Pts</td>
+                                    <td className='p-0  sm:w-auto'>Club</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>MP</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>W</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>D</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>L</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>GF</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>GA</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>GD</td>
+                                    <td className='p-0 w-[1.4rem] m:w-[1.8rem] sm:w-10'>Pts</td>
                                 </tr>
 
                             </tbody>

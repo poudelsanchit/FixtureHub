@@ -14,7 +14,7 @@ const Sidebar = ({isOpen,setIsOpen}) => {
 
                              
 {isOpen ?
-                    <div className=' transition-all duration-1000  absolute flex flex-col gap-5 rounded-r-2xl left-0 h-screen w-2/3 sm:w-3/12 top-0 z-50 dark:bg-sidebar-bg  bg-[#ffffff]  '>
+                    <div className='  absolute flex flex-col gap-5 rounded-r-2xl left-0 h-screen w-2/3 sm:w-3/12 top-0 z-50 dark:bg-sidebar-bg  bg-[#ffffff]  '>
 
                         <div className='flex justify-between'>
                             <div className='flex flex-row gap-2 text-[0.6rem] mt-5 ml-3 text-[#2a2c30]'>
